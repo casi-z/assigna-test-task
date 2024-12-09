@@ -14,7 +14,7 @@ export const AuthClient = axios.create({
 })
 
 AuthClient.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${token}`
+  config.headers.Authorization = `Bearer ${store.getters.getToken}`
   return config
 })
 
@@ -23,6 +23,7 @@ AuthClient.interceptors.response.use(
     return config
   },
   (error) => {
+    console.log(error)
     //Ошибка авторизации
     if (error.response.status === 401) {
       //Удаляем токен
