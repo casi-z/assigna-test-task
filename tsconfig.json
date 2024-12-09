@@ -1,4 +1,9 @@
 {
+  "compilerOptions": {
+    "types": [
+      "vuex/types"
+    ]
+  },
   "files": [],
   "references": [
     {

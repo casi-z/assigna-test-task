@@ -8,9 +8,6 @@ import vuetify from '@/plugins/vuetify.ts'
 
 const app = createApp(App)
 
-app
-  .use(router)
-  .use(store)
-  .use(vuetify)
+app.use(router).use(store).use(vuetify)
 
 app.mount('#app')

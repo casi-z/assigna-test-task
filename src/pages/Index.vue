@@ -1,30 +1,35 @@
 <script setup lang="ts">
-import axios from 'axios'
+import { AuthClient } from '@/api/ApiClient.ts'
+import { computed, ref } from 'vue'
+import type { ProductResponse } from '@/types'
+import Header from '@/components/Header.vue'
+import Product from '@/components/Product.vue'
 import { useStore } from 'vuex'
-import { computed } from 'vue'
+import ProductCreateModal from '@/components/ProductCreateModal.vue'
 
 const store = useStore()
-const token = computed(() => store.getters.getToken)
-const executePostRequest = async () => {
-  const url = 'http://45.145.4.182:8222/products'
-  try {
-    const result = await axios.get(url, {
-      headers: {
-        'Authorization': `Bearer ${token.value}`,
-      },
-    })
-    console.log('POST request result:', result)
-  } catch (error) {
-    console.error('Error during POST request:', error)
-  }
-}
 
-// Выполняем запрос при создании компонента
-executePostRequest()
+const products = computed(() => store.getters.getProducts)
+
+store.dispatch('updateProducts')
 </script>
 
 <template>
+  <Header />
   <main>
-    index
+    <v-container class="pt-4">
+      <v-row dense>
+        <h1 class="pl-4">Продукты</h1>
+      </v-row>
+      <v-row dense class="">
+        <ProductCreateModal />
+        <Product v-for="product in products?.items" :key="product.id" :data="product" />
+      </v-row>
+    </v-container>
   </main>
 </template>
+<style scoped lang="scss">
+main {
+  margin-top: 60px;
+}
+</style>
