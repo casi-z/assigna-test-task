@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { useStore } from 'vuex'
 import type { Product } from '@/types'
 
@@ -37,11 +37,13 @@ function handleSubmit() {
       price: Number(price.value),
     })
   }
+
+  //Очищаем инпуты и дисейблим кнопку
+  name.value = ''
+  price.value = ''
+  isButtonDisabled.value = true
 }
 
-// watch(price, (newPrice: string, oldPrice: string) => {
-//   console.log(validatePrice(newPrice) ? 'valid' : 'invalid', 'price')
-// })
 
 function handleInput() {
   isButtonDisabled.value = !(validatePrice(price.value) && validateName(name.value))

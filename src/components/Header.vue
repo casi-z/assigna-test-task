@@ -9,7 +9,7 @@ const username = computed(() => store.getters.getUsername)
 const router = useRouter()
 function handleLogout() {
   store.dispatch('logout')
-  router.push('/')
+  router.push('/login')
 }
 </script>
 
@@ -23,7 +23,7 @@ function handleLogout() {
       <v-app-bar-title class="hidden-xs">Guitar Shop</v-app-bar-title>
 
       <template v-slot:append>
-        <v-btn class="my-5">
+        <v-btn v-if="username" class="my-5">
           <v-avatar class="avatar" color="surface-variant">{{ username[0] }}</v-avatar>
           <span class="text-h6 text-capitalize">{{ username }}</span>
           <v-menu activator="parent">

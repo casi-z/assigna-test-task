@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { AuthClient } from '@/api/ApiClient.ts'
-import { computed, ref } from 'vue'
-import type { ProductResponse } from '@/types'
+import { computed } from 'vue'
 import Header from '@/components/Header.vue'
 import Product from '@/components/Product.vue'
 import { useStore } from 'vuex'

@@ -1,5 +1,5 @@
 export default function stringToColor(string: string | undefined) {
-  if (string !== undefined) {
+  if (string) {
     let hash = 0
     let i
 

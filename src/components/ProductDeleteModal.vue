@@ -27,14 +27,25 @@ function handleDelete() {
 
     <template v-slot:default="{ isActive }">
       <v-card :title="`Удаление продукта`">
-        <v-card-text> Вы действительно хотите удалить {{ data.name }}? </v-card-text>
+        <v-card-text> Вы действительно хотите удалить {{ data.name }}?</v-card-text>
 
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="default" type="button" variant="tonal" @click="isActive.value = false">
             Отмена
           </v-btn>
-          <v-btn color="error" @click="handleDelete" variant="tonal"> Удалить </v-btn>
+          <v-btn
+            color="error"
+            @click="
+              () => {
+                handleDelete()
+                isActive.value = false
+              }
+            "
+            variant="tonal"
+          >
+            Удалить
+          </v-btn>
         </v-card-actions>
       </v-card>
     </template>
