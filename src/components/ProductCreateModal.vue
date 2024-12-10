@@ -39,9 +39,6 @@ function handleSubmit() {
   }
 }
 
-// watch(price, (newPrice: string, oldPrice: string) => {
-//   console.log(validatePrice(newPrice) ? 'valid' : 'invalid', 'price')
-// })
 
 function handleInput() {
   isButtonDisabled.value = !(validatePrice(price.value) && validateName(name.value))
